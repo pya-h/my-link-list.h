@@ -8,12 +8,22 @@
     #define DIFF(x, y) ABS(x - y)
     // struct that is the base of our link list
     // using void * data-type, we can use this link list for every type in our app.
+    typedef char Option;
+    typedef enum {
+        IntegerItem = (Option) 1,
+        FloatItem,
+        StringItem,
+        //...
+        CustomType
+    } ListItemType;
+
     typedef struct ListItem
     {
         void *data;
+        ListItemType type;    
         struct ListItem *next, *prev;
     } ListItem;
-
+    
     // we define an outer struct, that will actually contain a link list;
     // this way we enhance the performance of the link list operations,
     // by setting the first and last item of the list (instead of finding the last item every time), and some fields [length till now]
